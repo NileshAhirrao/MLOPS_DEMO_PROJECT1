@@ -6,6 +6,7 @@ __pycache__/
 # C extensions
 *.so
 mongoDB_demo.ipynb
+artifact
 # Distribution / packaging
 .Python
 build/
