@@ -13,6 +13,8 @@ from src.constants import DATABASE_NAME,MONGODB_URL_KEY
 ca=certifi.where()
 
 class MongoDBClient:
+
+    client = None
     def __init__(self,database_name:str=DATABASE_NAME)->None:
         
         try:
@@ -22,8 +24,8 @@ class MongoDBClient:
                     raise Exception(f"Environemnt Variable '{MONGODB_URL_KEY}' is not set")
                 MongoDBClient.client=pymongo.MongoClient(mongo_db_url,tlscafile=ca)
             self.client=MongoDBClient.client
-            self.database_name=self.client[database_name] 
-            self.database=database_name
+            self.database=self.client[database_name] 
+            self.database_name=database_name
             logging.info("MONGO DB Connection Succesful") 
         except Exception as e:
             raise MyException(e,sys)      
