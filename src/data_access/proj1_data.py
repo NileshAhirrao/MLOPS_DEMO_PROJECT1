@@ -44,6 +44,8 @@ class Proj1Data:
             if database_name is None:
                 logging.info(f"When database_name is None and CollectionName is {collection_name}")
                 collection = self.mongo_client.database[collection_name]
+                  
+                
             else:
                 logging.info("When database_name is not None")
                 collection = self.mongo_client[database_name][collection_name]
